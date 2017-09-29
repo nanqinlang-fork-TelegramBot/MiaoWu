@@ -2,6 +2,7 @@
 
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 from random import randint
+import os
 from db import DB
 from config import BOT_TOKEN
 
@@ -87,7 +88,7 @@ def message(bot, update):
 
 def main():
     global db
-    db = DB('MiaoWu.db')
+    db = DB(os.path.dirname(os.path.realpath(__file__)) + '/MiaoWu.db')
     updater = Updater(BOT_TOKEN)
     updater.dispatcher.add_handler(CommandHandler('add', add_command, Filters.group))
     updater.dispatcher.add_handler(CommandHandler('list', list_command, Filters.group))
