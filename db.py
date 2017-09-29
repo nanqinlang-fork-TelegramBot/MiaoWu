@@ -11,4 +11,5 @@ class DB(object):
         return ret
 
     def __del__(self):
+        self.cursor.close()
         self.conn.close()
