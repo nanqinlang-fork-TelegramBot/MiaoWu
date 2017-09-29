@@ -95,7 +95,7 @@ def main():
     updater.dispatcher.add_handler(CommandHandler('listall', listall_command, Filters.group))
     updater.dispatcher.add_handler(CommandHandler('del', del_command, Filters.group))
     updater.dispatcher.add_handler(CommandHandler('help', help_command, Filters.group))
-    updater.dispatcher.add_handler(MessageHandler(Filters.text & Filters.group, message))
+    updater.dispatcher.add_handler(MessageHandler((Filters.text | Filters.command) & Filters.group, message))
     updater.start_polling()
     updater.idle()
 
