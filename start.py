@@ -82,6 +82,8 @@ def message(bot, update):
     look_up.sort(key=lambda x: len(x[0]), reverse=True)
     for trigger, result in look_up:
         if trigger in update.message.text:
+            if trigger != update.message.text and randint(1, 10) <= 5:
+                return
             results = [x[1] for x in look_up if x[0] == trigger]
             update.message.reply_text(results[randint(0, len(results) - 1)])
             return
